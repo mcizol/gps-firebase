@@ -9,25 +9,25 @@ import threading
 from firebase.firebase import FirebaseApplication, FirebaseAuthentication
 
 
-gpsd = None #seting the global variable
+gpsd = None
 
-os.system('clear') #clear the terminal (optional)
+os.system('clear')
 
 class GpsPoller(threading.Thread):
   def __init__(self):
     threading.Thread.__init__(self)
-    global gpsd #bring it in scope
-    gpsd = gps(mode=WATCH_ENABLE) #starting the stream of info
+    global gpsd
+    gpsd = gps(mode=WATCH_ENABLE)
     self.current_value = None
-    self.running = True #setting the thread running to true
+    self.running = True
 
   def run(self):
     global gpsd
     while gpsp.running:
-      gpsd.next() #this will continue to loop and grab EACH set of gpsd info to clear the buffer
+      gpsd.next()
 
 if __name__ == '__main__':
-  gpsp = GpsPoller() # create the thread
+  gpsp = GpsPoller()
 
   SECRET = ''
   DSN = ''
@@ -36,23 +36,20 @@ if __name__ == '__main__':
   firebase = FirebaseApplication(DSN, authentication)
 
   try:
-    gpsp.start() # start it up
+    gpsp.start()
     while True:
 
       os.system('clear')
-
       result = firebase.patch('/gps',
-    	{
+        {
+            'latitude': gpsd.fix.latitude,
+            'longitude': gpsd.fix.longitude,
+            'time utc': gpsd.utc,
+        })
+      time.sleep(5)
 
-    		'latitude': gpsd.fix.latitude,
-    		'longitude': gpsd.fix.longitude,
-    		'time utc': gpsd.utc,
-
-    	})
-      time.sleep(5) #set to whatever
-
-  except (KeyboardInterrupt, SystemExit): #when you press ctrl+c
+  except (KeyboardInterrupt, SystemExit):
     print "\nKilling Thread..."
     gpsp.running = False
-    gpsp.join() # wait for the thread to finish what it's doing
+    gpsp.join()
   print "Done.\nExiting."
