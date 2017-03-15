@@ -42,13 +42,13 @@ if __name__ == '__main__':
       os.system('clear')
 
       result = firebase.patch('/gps',
-	{
+    	{
 
-		'latitude': gpsd.fix.latitude,
-		'longitude': gpsd.fix.longitude,
-		'time utc': gpsd.utc,
+    		'latitude': gpsd.fix.latitude,
+    		'longitude': gpsd.fix.longitude,
+    		'time utc': gpsd.utc,
 
-	})
+    	})
       time.sleep(5) #set to whatever
 
   except (KeyboardInterrupt, SystemExit): #when you press ctrl+c
