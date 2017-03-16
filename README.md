@@ -10,6 +10,7 @@ $ sudo gpsd /dev/ttyAMA0 -F /var/run/gpsd.sock
 $  cgps -s
 
 #### Todos
+- Frontend to present coordinates on map (Angular? Polymer?)
 - Handle exception (requests.exceptions.HTTPError: 400 Client Error: Bad Request)
 
 
