@@ -11,7 +11,7 @@ $  cgps -s
 
 #### Todos
 - Frontend to present coordinates on map (Angular? Polymer?)
-- Handle exception (requests.exceptions.HTTPError: 400 Client Error: Bad Request)
+- Handle exception (requests.exceptions.HTTPError: 400 Client Error: Bad Request) (pyfirebase?)
 
 
 Resources that helped me
