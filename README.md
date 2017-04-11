@@ -3,13 +3,13 @@ simple example for realtime gps location tracking with python, firebase, (raspbe
 
 
 ```sh
-##First you have to install dependencys
+## First you have to install dependencys
 $ sudo apt-get install gpsd gpsd-clients
 
-##Start the serial port
+## Start the serial port
 $ stty -F /dev/ttyAMA0 9600
 
-##Start
+## Start
 $ sudo gpsd /dev/ttyAMA0 -F /var/run/gpsd.sock
 
 $  cgps -s
