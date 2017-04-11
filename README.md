@@ -9,7 +9,7 @@ $ sudo apt-get install gpsd gpsd-clients
 ## Start the serial port
 $ stty -F /dev/ttyAMA0 9600
 
-## Start
+## Start gpsd
 $ sudo gpsd /dev/ttyAMA0 -F /var/run/gpsd.sock
 
 $  cgps -s
