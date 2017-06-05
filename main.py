@@ -1,5 +1,5 @@
 #! /usr/bin/python
-# License: GPL 2.0
+# License: MIT
 
 import os
 from gps import *
@@ -52,4 +52,4 @@ if __name__ == '__main__':
     print "\nKilling Thread..."
     gpsp.running = False
     gpsp.join()
-  print "Done.\nExiting."
+  print "Program finished."
